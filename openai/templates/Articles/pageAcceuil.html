@@ -1,0 +1,219 @@
+<!-- templates/my_app/my_template.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}OpenAI{% endblock %}
+
+{% block content %}
+
+<div class=" flex justify-between w-full mt-[56px] md:min-h-[600px] h-[480px]" id="carrousel-hero-container">
+    <div class="carrousel-nav-left w-[2%] rounded-r-lg"
+        onclick="previousSlide()"></div>
+
+    <div class="carrousel-item gap-4 flex md:min-h justify-center text-center items-center flex-col w-[94%] rounded bg-cover bg-center cursor-pointer" 
+        onclick="window.location.href='lien-vers-article'">
+        <div class="carrousel-text flex flex-col gap-4">
+            <h2 class="text-white text-3xl md:text-5xl cursor-text">OpenAI</h2>
+            <p class="text-white cursor text">A new series of AI models designed to spend more time thinking
+                before they respond.</p>
+        </div>
+        <span class="carrousel-button bg-white rounded-full text-sm px-5 py-2 hover:bg-[rgba(249, 249, 251, 1)]"><a
+                href="#">Learn more</a></span>
+    </div>
+
+    <div class="carrousel-nav-right w-[2%] rounded-l-lg"
+        onclick="nextSlide()"></div>
+</div>
+
+<div class="mt-4">
+    <ul class="carrousel-indicators flex justify-center gap-3">
+        <li class="w-[6px] h-[6px] bg-gray-300 rounded cursor-pointer" data-index="0" onclick="goToSlide(0)">
+        </li>
+        <li class="w-[6px] h-[6px] bg-gray-300 rounded cursor-pointer" data-index="1" onclick="goToSlide(1)">
+        </li>
+        <li class="w-[6px] h-[6px] bg-gray-300 rounded cursor-pointer" data-index="2" onclick="goToSlide(2)">
+        </li>
+    </ul>
+</div>
+
+
+<section class="carrousel-section mt-14  md:w-[90%] w-[97%] ml-auto" id="chatGPT">
+    <div class="carrousel-header flex items-center justify-between md:mr-32 mr-10">
+        <h2 class="text-2xl">ChatGPT</h2>
+        <div class="carrousel-controls md:flex items-center gap-8 hidden">
+            <button class="carrousel-button-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button class="carrousel-button-right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(-90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="carrousel-container carrouselContainer flex flex-row mt-5 overflow-x-scroll noscrollbar gap-2">
+        {% for slide in articles_chatgpt %}
+        <div class="flex flex-col justify-between p-3 lg:min-w-[350px] lg:min-h-[440px] md:min-w-[270px] md:min-h-[390px] min-w-[200px] min-h-[300px] rounded bg-cover bg-center" style="background-image: url('{{ slide.background_image.url }}')">
+            <p class="text-white text-xs">{{ slide.mot_cle_principal }}</p>
+            <h2 class="text-white md:text-base text-sm">{{ slide.titre }}</h2>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="carrousel-section mt-14  md:w-[90%] w-[97%] ml-auto" id="research">
+    <div class="carrousel-header flex items-center justify-between md:mr-32 mr-10">
+        <h2 class="text-2xl">Research</h2>
+        <div class="carrousel-controls md:flex items-center gap-8 hidden">
+            <button class="carrousel-button-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button class="carrousel-button-right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(-90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="carrousel-container carrouselContainer flex flex-row mt-5 overflow-x-scroll noscrollbar gap-2">
+        {% for slide in articles_recherche %}
+        <div class="flex flex-col justify-between p-3 lg:min-w-[350px] lg:min-h-[440px] md:min-w-[270px] md:min-h-[390px] min-w-[200px] min-h-[300px] rounded bg-cover bg-center" style="background-image: url('{{ slide.background_image.url }}')">
+            <p class="text-white text-xs">{{ slide.mot_cle_principal }}</p>
+            <h2 class="text-white md:text-base text-sm">{{ slide.titre }}</h2>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="carrousel-section mt-14  md:w-[90%] w-[97%] ml-auto" id="for_business">
+    <div class="carrousel-header flex items-center justify-between md:mr-32 mr-10">
+        <h2 class="text-2xl">For Business</h2>
+        <div class="carrousel-controls md:flex items-center gap-8 hidden">
+            <button class="carrousel-button-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button class="carrousel-button-right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(-90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="carrousel-container carrouselContainer flex flex-row mt-5 overflow-x-scroll noscrollbar gap-2">
+        {% for slide in articles_business %}
+        <div class="flex flex-col justify-between p-3 lg:min-w-[350px] lg:min-h-[440px] md:min-w-[270px] md:min-h-[390px] min-w-[200px] min-h-[300px] rounded bg-cover bg-center" style="background-image: url('{{ slide.background_image.url }}')">
+            <p class="text-white text-xs">{{ slide.mot_cle_principal }}</p>
+            <h2 class="text-white md:text-base text-sm">{{ slide.titre }}</h2>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="carrousel-section mt-14  md:w-[90%] w-[97%] ml-auto" id="for_developpeurs">
+    <div class="carrousel-header flex items-center justify-between md:mr-32 mr-10">
+        <h2 class="text-2xl">For Developpeurs</h2>
+        <div class="carrousel-controls md:flex items-center gap-8 hidden">
+            <button class="carrousel-button-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button class="carrousel-button-right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(-90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="carrousel-container carrouselContainer flex flex-row mt-5 overflow-x-scroll noscrollbar gap-2">
+        {% for slide in articles_api %}
+        <div class="flex flex-col justify-between p-3 lg:min-w-[350px] lg:min-h-[440px] md:min-w-[270px] md:min-h-[390px] min-w-[200px] min-h-[300px] rounded bg-cover bg-center" style="background-image: url('{{ slide.background_image.url }}')">
+            <p class="text-white text-xs">{{ slide.mot_cle_principal }}</p>
+            <h2 class="text-white md:text-base text-sm">{{ slide.titre }}</h2>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="carrousel-section mt-14  md:w-[90%] w-[97%] ml-auto" id="stories">
+    <div class="carrousel-header flex items-center justify-between md:mr-32 mr-10">
+        <h2 class="text-2xl">Stories</h2>
+        <div class="carrousel-controls md:flex items-center gap-8 hidden">
+            <button class="carrousel-button-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button class="carrousel-button-right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.875rem" viewBox="0 0 14 8" fill="none"
+                    style="transform: rotate(-90deg);">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="carrousel-container carrouselContainer flex flex-row mt-5 overflow-x-scroll noscrollbar gap-2">
+        {% for slide in articles_storie %}
+        <div class="flex flex-col justify-between p-3 lg:min-w-[350px] lg:min-h-[440px] md:min-w-[270px] md:min-h-[390px] min-w-[200px] min-h-[300px] rounded bg-cover bg-center" style="background-image: url('{{ slide.background_image.url }}')">
+            <p class="text-white text-xs">{{ slide.mot_cle_principal }}</p>
+            <h2 class="text-white md:text-base text-sm">{{ slide.titre }}</h2>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<div class="bg-white h-[400px] rounded mt-20 flex flex-col items-center justify-center md:w-[80%] w-[95%] mx-auto">
+    <div class="flex flex-col items-center gap-4 w-[50%]">
+        <p class="text-4xl text-center">Instant answers. Greater productivity. Endless inspiration.
+        </p>
+        <a href="#">
+            <button class="text-white bg-black rounded-full px-6 py-2 flex items-center space-x-2">
+                <span>Try ChatGPT</span>
+                <i class="bi bi-arrow-up-right"></i>
+            </button>
+        </a>
+    </div>
+</div>
+
+<script src="/static/Articles/javascript/carrousel_home_page.js"></script>
+{% endblock %}

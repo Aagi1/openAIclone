@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Articles de recherche{% endblock %}
+
+{% block content %}
+
+<div>
+    <div class="flex items-center flex-col w-2/3 mx-auto">
+        <p>{{ article.date_publication|date:"F d, Y" }}</p>
+        <h1 class="mt-5 text-6xl">{{ article.title }}</h1>
+        <div class="flex items-center gap-4 flex-col w-2/3 text-center">
+            <p class="mt-10 text-gray-800">{{ article.summary }}</p>
+            <button class="bg-black text-white px-4 py-2 rounded-full">Contributions</button>
+
+            <div class="mt-20 text-justify text-gray-800">
+                <p>{{% article.content %}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

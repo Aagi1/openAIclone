@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}News{% endblock %}
+
+{% block content %}
+
+<br><br><br><br><br>
+
+<div>
+    <div class="flex items-center flex-col w-2/3 mx-auto">
+        <p>September 12, 2024</p>
+        <h1 class="mt-5 text-6xl">Learning to Reason with LLMs</h1>
+        <div class="flex items-center gap-4 flex-col w-2/3 text-center">
+            <p class="mt-10 text-gray-800">We are introducing OpenAI o1, a new large language model trained with reinforcement
+                learning to perform complex reasoning. o1 thinks before it answers—it can produce a long internal chain
+                of thought before responding to the user.</p>
+            <button class="bg-black text-white px-4 py-2 rounded-full">Contributions</button>
+
+            <div class="mt-20 text-justify text-gray-800">
+                <p>OpenAI o1 ranks in the 89th percentile on competitive programming questions (Codeforces), places among
+                    the top 500 students in the US in a qualifier for the USA Math Olympiad (AIME), and exceeds human
+                    PhD-level accuracy on a benchmark of physics, biology, and chemistry problems (GPQA). While the work
+                    needed to make this new model as easy to use as current models is still ongoing, we are releasing an
+                    early version of this model, OpenAI o1-preview, for immediate use in ChatGPT and to trusted API
+                    users⁠(opens in a new window).
+    
+                    Our large-scale reinforcement learning algorithm teaches the model how to think productively using its
+                    chain of thought in a highly data-efficient training process. We have found that the performance of o1
+                    consistently improves with more reinforcement learning (train-time compute) and with more time spent
+                    thinking (test-time compute). The constraints on scaling this approach differ substantially from those
+                    of LLM pretraining, and we are continuing to investigate them.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

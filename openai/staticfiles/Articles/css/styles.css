@@ -1,0 +1,26 @@
+/* reglages generales */
+
+@font-face {
+    font-family: Sohne;
+    src: url("/static/Articles/font/Sohne.otf");
+}
+
+body {
+    font-family: Sohne;
+}
+
+
+.carrousel-indicators li.active {
+    background-color: #333; /* Couleur différente pour indiquer l'élément actif coarousel principal*/
+}
+
+/****empecher l'afichage du scrollbar de la section chatgpt**************/
+/* Ajouter dans votre fichier CSS */
+.noscrollbar::-webkit-scrollbar {
+    display: none; /* Pour Chrome, Safari et Opera */
+}
+.noscrollbar {
+    -ms-overflow-style: none; /* Pour Internet Explorer et Edge */
+    scrollbar-width: none; /* Pour Firefox */
+} 
+
