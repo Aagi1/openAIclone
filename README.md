@@ -2,13 +2,14 @@
 
 Ce projet est un **clone visuel et fonctionnel** du site officiel **openai.com**.
 
-## Objectif du projet
+## Technologies utilisées
 
-L’objectif de ce projet est de :
-- améliorer les compétences en **HTML, CSS et JavaScript et Django**,
-- reproduire une interface moderne et responsive,
-- comprendre la structure d’un site web professionnel,
-- pratiquer l’intégration fidèle à partir d’un site réel.
+- **HTML5**
+- **CSS3 / Tailwind CSS**
+- **JavaScript**
+- **Responsive Design**
+- **Figma** (pour l’analyse du design, si applicable)
+- **Django**
 
 Ce projet n’est **pas un produit officiel** et n’est lié à OpenAI d’aucune manière.
 
@@ -42,15 +43,3 @@ Ce projet n’est **pas un produit officiel** et n’est lié à OpenAI d’aucu
   <img src="https://github.com/user-attachments/assets/70dfb569-06d4-4c94-b622-8a51769d8d5d" width="615"/>
   
   <img src="https://github.com/user-attachments/assets/05a5d4b7-5362-4fac-a6c1-e13bccdc6bfb" width="660"/>
-
-
-
-## Technologies utilisées
-
-- **HTML5**
-- **CSS3 / Tailwind CSS**
-- **JavaScript**
-- **Responsive Design**
-- **Figma** (pour l’analyse du design, si applicable)
-- **Django**
-
